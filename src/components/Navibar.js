@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 
 export default function Navibar() {
   const userEmail = useSelector((state) => state.userEmail);
+  let userEmailElement;
+  if (userEmail === 'Log in') {
+    userEmailElement = <Link to={'/login'}>{userEmail}</Link>;
+  } else {
+    userEmailElement = <div>{userEmail}</div>;
+  }
   return (
     <div>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -10,10 +16,7 @@ export default function Navibar() {
           <Link className="self-center text-xl font-semibold whitespace-nowrap dark:text-white" to={'/'}>
             Tagging app
           </Link>
-          <div className="flex items-center">
-            {/* <Link to={'/login'}>Login</Link> */}
-            <div>{userEmail}</div>
-          </div>
+          <div className="flex items-center">{userEmailElement}</div>
         </div>
       </nav>
       <nav className="bg-gray-50 dark:bg-gray-700">

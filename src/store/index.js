@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-function emailReducer(state = { userEmail: 'Guest' }, action) {
+function emailReducer(state = { userEmail: 'Log in' }, action) {
   if (action.type === 'changeEmail' && action.payload !== undefined) {
     return { ...state, userEmail: action.payload };
   } else return state;
