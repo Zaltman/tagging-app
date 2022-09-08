@@ -14,7 +14,7 @@ import Login from './components/Login';
 import Navibar from './components/Navibar';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import store from './store';
 
 export default function App() {
@@ -63,6 +63,13 @@ export default function App() {
       // ...
     }
   });
+  // signOut(auth)
+  //   .then(() => {
+  //     // Sign-out successful.
+  //   })
+  //   .catch((error) => {
+  //     // An error happened.
+  //   });
 
   return (
     <div>
