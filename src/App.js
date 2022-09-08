@@ -15,10 +15,9 @@ import Navibar from './components/Navibar';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import store from './store';
 
 export default function App() {
-  const container = document.getElementById('root');
-  const userEmail = useSelector((state) => state.userEmail);
   // Import the functions you need from the SDKs you need
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -38,9 +37,11 @@ export default function App() {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const auth = getAuth(app);
-  // var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
   // console.log(db);
+
+  const container = document.getElementById('root');
+  const userEmail = useSelector((state) => state.userEmail);
+  // store.dispatch({ type: 'changeEmail', payload: 'test setEmail' });
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -67,7 +68,6 @@ export default function App() {
     <div>
       <BrowserRouter>
         <Navibar />
-        <h2>Email test {userEmail}</h2>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
@@ -90,6 +90,3 @@ export default function App() {
     </div>
   );
 }
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
