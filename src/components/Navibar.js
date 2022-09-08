@@ -1,6 +1,8 @@
-// import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 export default function Navibar() {
+  const userEmail = useSelector((state) => state.userEmail);
   return (
     <div>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -12,7 +14,8 @@ export default function Navibar() {
             <a href="tel:5541251234" className="mr-6 text-sm font-medium text-gray-500 dark:text-white hover:underline">
               (555) 412-1234
             </a>
-            <Link to={'/login'}>Login</Link>
+            {/* <Link to={'/login'}>Login</Link> */}
+            <div>{userEmail}</div>
           </div>
         </div>
       </nav>

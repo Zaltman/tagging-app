@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -18,7 +18,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 export default function App() {
   const container = document.getElementById('root');
-
+  const userEmail = useSelector((state) => state.userEmail);
   // Import the functions you need from the SDKs you need
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -40,21 +40,9 @@ export default function App() {
   const auth = getAuth(app);
   // var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
-  console.log(db);
+  // console.log(db);
 
   onAuthStateChanged(auth, (user) => {
-    //popup on successful login
-    // const ToastAuthSuccess = Swal.mixin({
-    //   toast: true,
-    //   position: 'top-end',
-    //   showConfirmButton: false,
-    //   timer: 3000,
-    //   timerProgressBar: true,
-    //   didOpen: (toast) => {
-    //     toast.addEventListener('mouseenter', Swal.stopTimer);
-    //     toast.addEventListener('mouseleave', Swal.resumeTimer);
-    //   },
-    // });
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
@@ -77,9 +65,9 @@ export default function App() {
 
   return (
     <div>
-      {/* <Provider> */}
       <BrowserRouter>
         <Navibar />
+        <h2>Email test {userEmail}</h2>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
@@ -99,7 +87,6 @@ export default function App() {
           />
         </Routes>
       </BrowserRouter>
-      {/* </Provider> */}
     </div>
   );
 }

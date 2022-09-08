@@ -11,7 +11,7 @@ export default function Level1(props) {
     } else if (test === true) {
       setTest(false);
     }
-    console.log(test);
+    // console.log(test);
   };
   // const handleImgClick = props.handleImgClick;
   // const isModalOpen = props.isModalOpen;
