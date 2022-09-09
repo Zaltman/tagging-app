@@ -18,6 +18,7 @@ export default function Login() {
   const watchPw = watch('Password');
 
   let onSubmit = (e) => {
+    // e.preventDefault();
     signInWithEmailAndPassword(auth, watchEmail, watchPw)
       .then((userCredential) => {
         // Signed in

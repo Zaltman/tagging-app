@@ -18,6 +18,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import store from './store';
 import setUserEmail from './components/setUserEmail';
+import { firebaseConfig } from './components/firebaseConfig';
 
 export default function App() {
   // Import the functions you need from the SDKs you need
@@ -25,15 +26,6 @@ export default function App() {
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: 'AIzaSyBWMBTSFZZbqkQY7weHsVi50NvIXJNUbqw',
-    authDomain: 'find-waldo-game.firebaseapp.com',
-    databaseURL: 'https://find-waldo-game-default-rtdb.europe-west1.firebasedatabase.app',
-    projectId: 'find-waldo-game',
-    storageBucket: 'find-waldo-game.appspot.com',
-    messagingSenderId: '87978521927',
-    appId: '1:87978521927:web:7eb462ff31582ea5fac862',
-  };
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
