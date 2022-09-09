@@ -1,11 +1,9 @@
 // import Header from './Header';
 // import Register from './Register';
-import Testlink from './Testlink';
 export default function Homepage() {
   return (
     <div className="homePage">
       <h1>Main info</h1>
-      <Testlink></Testlink>
 
       <h2>Lorem ipsum dolor sit amet.</h2>
       <h2>Id esse neque maxime itaque.</h2>

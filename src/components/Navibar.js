@@ -7,7 +7,7 @@ export default function Navibar() {
   if (userEmail === 'Log in') {
     userEmailElement = <Link to={'/login'}>{userEmail}</Link>;
   } else {
-    userEmailElement = <div>{userEmail}</div>;
+    userEmailElement = <Link to={'/userpage'}>{userEmail}</Link>;
   }
   return (
     <div>

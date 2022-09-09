@@ -1,10 +1,12 @@
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-export default function Login(props) {
-  const auth = getAuth();
+import { useSelector } from 'react-redux';
+
+export default function Login() {
   const provider = new GoogleAuthProvider();
-  const userEmail = props.userEmail;
+  const auth = getAuth();
+  const userEmail = useSelector((state) => state.userEmail);
   const {
     register,
     watch,
@@ -16,7 +18,6 @@ export default function Login(props) {
   const watchPw = watch('Password');
 
   let onSubmit = (e) => {
-    // e.preventDefault();
     signInWithEmailAndPassword(auth, watchEmail, watchPw)
       .then((userCredential) => {
         // Signed in
@@ -24,8 +25,6 @@ export default function Login(props) {
         const user = userCredential.user;
         console.log(user);
         window.location.href = '/';
-
-        // ...
       })
       .catch((error) => {
         console.log('nain');
@@ -91,11 +90,11 @@ export default function Login(props) {
       passwordErrMsg = 'No user with this email';
     } else if (passwordErrMsg === '') passwordErrMsg = errors.Password.type;
   }
-  if (userEmail === 'Guest') {
+  if (userEmail === 'Log in') {
     return (
       <div>
-        <form onSubmit={handleSubmit(onSubmit)} id="regForm">
-          <p>Login with email and password </p>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center text-center" id="regForm">
+          <p className="">Login with email and password </p>
           <label htmlFor="emailInput">Email</label>
           <input
             type="text"
