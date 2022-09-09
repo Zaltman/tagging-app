@@ -82,7 +82,7 @@ export default function App() {
           <Route
             path="*"
             element={
-              <main style={{ padding: '1rem' }}>
+              <main style={{ padding: '1rem', display: 'flex', justifyContent: 'center' }}>
                 <p>There's nothing here!</p>
               </main>
             }
