@@ -8,6 +8,7 @@ import AuthPage from './components/AuthPage';
 import EmailLogin from './components/EmailLogin';
 import GamePage from './components/Gamepage';
 import Homepage from './components/Homepage';
+import Level from './components/Level';
 import Userpage from './components/Userpage';
 import Level1 from './components/Level1';
 import Register from './components/Register';
@@ -57,13 +58,6 @@ export default function App() {
       // ...
     }
   });
-  // signOut(auth)
-  //   .then(() => {
-  //     // Sign-out successful.
-  //   })
-  //   .catch((error) => {
-  //     // An error happened.
-  //   });
 
   return (
     <div>
@@ -80,6 +74,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/userpage" element={<Userpage />} />
           <Route path="/welcome" element={<Welcome />} />
+          <Route path="/level/:id" element={<Level />} />
 
           <Route
             path="*"
