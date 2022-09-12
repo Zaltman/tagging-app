@@ -25,7 +25,7 @@ export default function Login() {
         console.log('ain');
         const user = userCredential.user;
         console.log(user);
-        window.location.href = '/';
+        window.location.href = '/welcome';
       })
       .catch((error) => {
         console.log('nain');
@@ -46,7 +46,7 @@ export default function Login() {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        window.location.href = '/';
+        window.location.href = '/welcome';
 
         // ...
       })

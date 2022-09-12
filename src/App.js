@@ -13,6 +13,7 @@ import Level1 from './components/Level1';
 import Register from './components/Register';
 import Login from './components/Login';
 import Navibar from './components/Navibar';
+import Welcome from './components/Welcome';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
@@ -78,6 +79,7 @@ export default function App() {
           <Route path="/level1" element={<Level1 />} />
           <Route path="/login" element={<Login />} />
           <Route path="/userpage" element={<Userpage />} />
+          <Route path="/welcome" element={<Welcome />} />
 
           <Route
             path="*"
