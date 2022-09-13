@@ -3,7 +3,8 @@ import level1 from '../assetts/level2.jpg';
 
 export default function getImgArr() {
   let imgArr = [];
-  imgArr[0] = level0;
-  imgArr[1] = level1;
+  imgArr[0] = { img: level0, id: 0 };
+  imgArr[1] = { img: level1, id: 1 };
+
   return imgArr;
 }
