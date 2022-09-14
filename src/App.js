@@ -60,7 +60,7 @@ export default function App() {
   });
 
   return (
-    <div>
+    <div className="flex flex-col justify-center w-fit min-w-full">
       <BrowserRouter>
         <Navibar />
         <Routes>
