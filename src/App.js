@@ -1,7 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider, useSelector } from 'react-redux';
-import reportWebVitals from './reportWebVitals';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AuthPage from './components/AuthPage';
