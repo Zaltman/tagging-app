@@ -46,8 +46,8 @@ export default function Level() {
   };
 
   // level0 char coords
-  // waldo :
-  // zoidberg :
+  // waldo : top left x662  y1486 bottom right x976 y1661
+  // zoidberg : top left x1539 y2468 bottom right x1771 y2764
   // bowser :
 
   let handleModalClick = (e) => {};
@@ -75,10 +75,9 @@ export default function Level() {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const body = {
-      test: 'event',
-      level: 'level1',
-      cordsY: coords.y,
-      cordsX: coords.x,
+      character: whichCharacter,
+      level: levelId,
+      coords: coords,
     };
     const options = {
       method: 'POST',
@@ -86,6 +85,9 @@ export default function Level() {
       mode: 'cors',
       body: JSON.stringify(body),
     };
+    level[1] = {};
+    closeModal();
+    console.log(options.body);
     fetch('https://eoigvwbd7a4ked9.m.pipedream.net', options)
       .then((response) => response.json())
       .then((data) => {
