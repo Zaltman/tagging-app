@@ -46,9 +46,9 @@ export default function Level() {
   };
 
   // level0 char coords
-  // waldo : top left x662  y1486 bottom right x976 y1661
-  // zoidberg : top left x1539 y2468 bottom right x1771 y2764
-  // bowser :
+  // waldo : top left x671  y6195 bottom right x982 y6366
+  // zoidberg : top left x1518 y7173 bottom right x1761 7470
+  // bowser : top left x1576 y3375 bottom right x1773 y3526
 
   let handleModalClick = (e) => {};
   let openModal = (e) => {
@@ -85,7 +85,7 @@ export default function Level() {
       mode: 'cors',
       body: JSON.stringify(body),
     };
-    level[1] = {};
+    // level[1] = {};
     closeModal();
     console.log(options.body);
     fetch('https://eoigvwbd7a4ked9.m.pipedream.net', options)
@@ -93,8 +93,8 @@ export default function Level() {
       .then((data) => {
         let isCordsCorrect = data.isCordsCorrect;
         // console.log(isCordsCorrect);
-        if (isCordsCorrect === true) alert('You found Waldo');
-        else if (isCordsCorrect === false) alert('Its not Waldo');
+        if (isCordsCorrect === true) alert(`You found ${whichCharacter}`);
+        else if (isCordsCorrect === false) alert(`Its not ${whichCharacter}`);
       });
   };
   return (
