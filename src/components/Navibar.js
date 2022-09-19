@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export default function Navibar() {
-  const userEmail = useSelector((state) => state.userEmail);
+  const userEmail = useSelector((state) => state.email);
   let userEmailElement;
   if (userEmail === 'Log in') {
     userEmailElement = <Link to={'/login'}>{userEmail}</Link>;

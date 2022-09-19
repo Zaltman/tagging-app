@@ -6,6 +6,7 @@ import img from '../assetts/level1.jpg';
 import waldoImg from '../characterpics/waldo.png';
 import bowserImg from '../characterpics/bowser.png';
 import zoidbergImg from '../characterpics/zoidberg.png';
+import Stopwatch from './Stopwatch';
 
 // import ChooseCharacterModal from './ChooseCharacterModal';
 // import ReactModal from 'react-modal';
@@ -99,6 +100,7 @@ export default function Level() {
   };
   return (
     <div className="flex justify-center flex-grow">
+      <Stopwatch></Stopwatch>
       <img className="max-w-none" onClick={handleImgClick} src={imgArr[levelId].img} alt="Find Waldo"></img>
       <ReactModal isOpen={modalIsOpen} onClick={handleModalClick} onRequestClose={closeModal} style={customStyles}>
         <form className="w-full h-full">

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 export default function Login() {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
-  const userEmail = useSelector((state) => state.userEmail);
+  const userEmail = useSelector((state) => state.email);
   const {
     register,
     watch,

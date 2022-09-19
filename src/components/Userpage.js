@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux';
 import { signOut, getAuth } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './firebaseConfig';
-import setUserEmail from './setUserEmail';
+import setUserEmail from './reducers/email/setUserEmail';
 import { Link } from 'react-router-dom';
 
 export default function Userpage() {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
-  const userEmail = useSelector((state) => state.userEmail);
+  const userEmail = useSelector((state) => state.email);
 
   function handleSignOut() {
     signOut(auth)

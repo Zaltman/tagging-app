@@ -17,8 +17,7 @@ import Welcome from './components/Welcome';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import store from './store';
-import setUserEmail from './components/setUserEmail';
+import setUserEmail from './components/reducers/email/setUserEmail';
 import { firebaseConfig } from './components/firebaseConfig';
 
 export default function App() {
@@ -53,7 +52,9 @@ export default function App() {
       // ...
     } else {
       // User is signed out
-      // console.log('auth state change sign out');
+      console.log('auth state change sign out');
+      setUserEmail('Log in');
+
       // ...
     }
   });
