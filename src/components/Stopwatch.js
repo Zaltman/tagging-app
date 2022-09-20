@@ -20,7 +20,7 @@ export default function Stopwatch() {
   }, [running]);
   return (
     <div className="fixed left-1/2 -translate-x-1/2 ">
-      <div className="text-xl text-red-500">
+      <div className="text-xl text-red-500 bg-black rounded-md p-1">
         <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
         <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
         <span>{('0' + ((time / 10) % 100)).slice(-2)}</span>
