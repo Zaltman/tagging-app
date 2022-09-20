@@ -9,6 +9,7 @@ import zoidbergImg from '../characterpics/zoidberg.png';
 import Stopwatch from './Stopwatch';
 import { useEffect } from 'react';
 import startStopWatch from './reducers/stopwatch/startStopWatch';
+import CharIcons from './CharIcons';
 
 let customStyles = {
   content: {
@@ -102,6 +103,7 @@ export default function Level() {
   });
   return (
     <div className="flex justify-center flex-grow">
+      <CharIcons></CharIcons>
       <Stopwatch></Stopwatch>
       <img className="max-w-none" onClick={handleImgClick} src={imgArr[levelId].img} alt="Find Waldo"></img>
       <ReactModal isOpen={modalIsOpen} onClick={handleModalClick} onRequestClose={closeModal} style={customStyles}>
