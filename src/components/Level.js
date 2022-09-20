@@ -10,6 +10,7 @@ import Stopwatch from './Stopwatch';
 import { useEffect } from 'react';
 import startStopWatch from './reducers/stopwatch/startStopWatch';
 import CharIcons from './CharIcons';
+import setFoundChar from './reducers/charPics/setFoundChar';
 
 let customStyles = {
   content: {
@@ -93,9 +94,11 @@ export default function Level() {
       .then((response) => response.json())
       .then((data) => {
         let isCordsCorrect = data.isCordsCorrect;
-        // console.log(isCordsCorrect);
-        if (isCordsCorrect === true) alert(`You found ${whichCharacter}`);
-        else if (isCordsCorrect === false) alert(`Its not ${whichCharacter}`);
+        whichCharacter = whichCharacter.charAt(0).toUpperCase() + whichCharacter.slice(1);
+        if (isCordsCorrect === true) {
+          alert(`You found ${whichCharacter}`);
+          setFoundChar(whichCharacter);
+        } else if (isCordsCorrect === false) alert(`Its not ${whichCharacter}`);
       });
   };
   useEffect(() => {
