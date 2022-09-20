@@ -7,9 +7,8 @@ import waldoImg from '../characterpics/waldo.png';
 import bowserImg from '../characterpics/bowser.png';
 import zoidbergImg from '../characterpics/zoidberg.png';
 import Stopwatch from './Stopwatch';
-
-// import ChooseCharacterModal from './ChooseCharacterModal';
-// import ReactModal from 'react-modal';
+import { useEffect } from 'react';
+import startStopWatch from './reducers/stopwatch/startStopWatch';
 
 let customStyles = {
   content: {
@@ -98,6 +97,9 @@ export default function Level() {
         else if (isCordsCorrect === false) alert(`Its not ${whichCharacter}`);
       });
   };
+  useEffect(() => {
+    startStopWatch();
+  });
   return (
     <div className="flex justify-center flex-grow">
       <Stopwatch></Stopwatch>

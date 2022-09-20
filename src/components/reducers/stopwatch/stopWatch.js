@@ -1,9 +1,12 @@
 export default function stopWatch(state = { isRunning: false, time: 0 }, action) {
+  let newState = { ...state };
   switch (action.type) {
     case 'startStopWatch':
-      return { ...(state.isRunning = true) };
+      newState.isRunning = true;
+      return newState;
     case 'stopStopWatch':
-      return { ...(state.isRunning = false) };
+      newState.isRunning = false;
+      return newState;
     default:
       return state;
   }

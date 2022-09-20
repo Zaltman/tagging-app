@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 export default function Stopwatch() {
   const [time, setTime] = useState(0);
   //   const [running, setRunning] = useState(false);
-  let running = useSelector((state) => state.running);
+  let running = useSelector((state) => state.stopWatch.isRunning);
+
+  // console.log(running);
   useEffect(() => {
     let interval;
     if (running) {
