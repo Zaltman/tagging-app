@@ -11,7 +11,12 @@ import { useEffect } from 'react';
 import startStopWatch from './reducers/stopwatch/startStopWatch';
 import CharIcons from './CharIcons';
 import setFoundChar from './reducers/charPics/setFoundChar';
-
+// import checkIfAllCharsFound from './checkIfAllCharsFound';
+import { useSelector, getState } from 'react-redux';
+import stopStopWatch from './reducers/stopwatch/stopStopWatch';
+import CheckIfAllCharsFound from './CheckIfAllCharsFound';
+import store from '../store/index';
+//modal style
 let customStyles = {
   content: {
     top: '50%',
@@ -30,19 +35,15 @@ export default function Level() {
   const levelId = parseInt(useParams().id);
   const imgArr = getImgArr();
   ReactModal.setAppElement('body');
-
+  // const charData = useSelector((state) => state.charPics);
   let dataToSend = { level: '', character: '', coordX: undefined, cordY: undefined };
 
   let handleImgClick = (e) => {
     let newCords = { ...coords };
-    // console.log(newCords);
     newCords.x = e.pageX - e.target.offsetLeft;
     newCords.y = e.pageY - e.target.offsetTop;
     setCoords(newCords);
     console.log(coords);
-    // coordsX = e.pageX - e.target.offsetLeft;
-    // coordsY = e.pageY - e.target.offsetTop;
-    // console.log(coordsX);
 
     openModal();
   };
@@ -63,6 +64,7 @@ export default function Level() {
   let handleRadioPick = (e) => {
     whichCharacter = e.target.id.toLowerCase();
   };
+
   let handleChoiceConfirm = (e) => {
     e.preventDefault();
     if (whichCharacter === undefined) {
@@ -70,9 +72,6 @@ export default function Level() {
       return;
     }
     dataToSend = { level: '', character: '', coordX: undefined, cordY: undefined };
-    console.log({ whichCharacter });
-    console.log({ coords });
-    console.log({ levelId });
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -89,7 +88,7 @@ export default function Level() {
     };
     // level[1] = {};
     closeModal();
-    console.log(options.body);
+    // console.log(options.body);
     fetch('https://eoigvwbd7a4ked9.m.pipedream.net', options)
       .then((response) => response.json())
       .then((data) => {
@@ -99,6 +98,12 @@ export default function Level() {
           alert(`You found ${whichCharacter}`);
           setFoundChar(whichCharacter);
         } else if (isCordsCorrect === false) alert(`Its not ${whichCharacter}`);
+      })
+      .then(() => {
+        let charState = store.getState().charPics;
+        if (CheckIfAllCharsFound(charState) === true) {
+          stopStopWatch();
+        }
       });
   };
   useEffect(() => {
