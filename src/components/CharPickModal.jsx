@@ -6,6 +6,7 @@ import store from '../store';
 import CheckIfAllCharsFound from './CheckIfAllCharsFound';
 import stopStopWatch from './reducers/stopwatch/stopStopWatch';
 import setCharPickModalClose from './reducers/modals/setCharPickModalClose';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function CharPickModal(props) {
   const levelId = props.levelId;
@@ -47,7 +48,8 @@ export default function CharPickModal(props) {
         whichCharacter = whichCharacter.charAt(0).toUpperCase() + whichCharacter.slice(1);
         if (isCordsCorrect === true) {
           setFoundChar(whichCharacter);
-        } else if (isCordsCorrect === false) alert(`Its not ${whichCharacter}`);
+          toast(`You found ${whichCharacter}`);
+        } else if (isCordsCorrect === false) toast(`${whichCharacter} is not there`);
       })
       .then(() => {
         let charState = store.getState().charPics;

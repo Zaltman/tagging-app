@@ -19,6 +19,8 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import setUserEmail from './components/reducers/email/setUserEmail';
 import { firebaseConfig } from './components/firebaseConfig';
+import Toast from './components/Toast';
+import { toast } from 'react-toastify';
 
 export default function App() {
   // Import the functions you need from the SDKs you need
@@ -42,26 +44,20 @@ export default function App() {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
-      // store.dispatch({ type: 'changeEmail', payload: user.email });
       setUserEmail(user.email);
       console.log({ user });
       console.log('onauthstatechanged');
-      // setUserEmail(user.email);
-      // console.log('auth state change logged in');
-      // console.log(user.email);
-      // ...
     } else {
       // User is signed out
       console.log('auth state change sign out');
       setUserEmail('Log in');
-
-      // ...
     }
   });
 
   return (
     <div className="flex flex-col justify-center w-fit min-w-full">
       <BrowserRouter>
+        <Toast />
         <Navibar />
         <Routes>
           <Route path="/" element={<Homepage />} />
