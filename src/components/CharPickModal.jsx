@@ -54,6 +54,8 @@ export default function CharPickModal(props) {
       .then(() => {
         let charState = store.getState().charPics;
         if (CheckIfAllCharsFound(charState) === true) {
+          toast(`You found all characters. Congratulations!!!`);
+
           stopStopWatch();
         }
       });
