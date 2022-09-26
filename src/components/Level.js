@@ -10,9 +10,13 @@ import CharIcons from './CharIcons';
 import { useSelector, getState } from 'react-redux';
 import CharPickModal from './CharPickModal';
 import setCharPickModalClose from './reducers/modals/setCharPickModalClose';
-
+import SubmitHighscoreModal from './SubmitHighscoreModal';
+import CheckIfAllCharsFound from './CheckIfAllCharsFound';
+import stopStopWatch from './reducers/stopwatch/stopStopWatch';
+import setSubmitHighscoreModalOpen from './reducers/modals/setSubmitHighscoreModalOpen';
+import { toast } from 'react-toastify';
 //modal style
-let customStyles = {
+let charPickModalStyles = {
   content: {
     top: '50%',
     left: '50%',
@@ -23,12 +27,32 @@ let customStyles = {
     width: '250px',
   },
 };
+let submitHighscoreModalStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    height: '400px',
+    width: '250px',
+  },
+};
+
 export default function Level() {
+  ReactModal.setAppElement('body');
+
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const levelId = parseInt(useParams().id);
-  const imgArr = getImgArr();
-  ReactModal.setAppElement('body');
   const isCharPickModalOpen = useSelector((state) => state.charPickModal.isOpen);
+  const isHichscoreModalOpen = useSelector((state) => state.submitHighscoreModal.isOpen);
+  const stopwatchIsRunning = useSelector((state) => state.stopWatch.isRunning);
+  const charState = useSelector((state) => state.charPics);
+
+  // const [isHichscoreModalOpen, setisHichscoreModalOpen] = useState(false);
+  const imgArr = getImgArr();
+
+  // console.log({ isHichscoreModalOpen });
   let handleImgClick = (e) => {
     let newCords = { ...coords };
     newCords.x = e.pageX - e.target.offsetLeft;
@@ -43,14 +67,32 @@ export default function Level() {
   // bowser : top left x1576 y3375 bottom right x1773 y3526
 
   useEffect(() => {
-    startStopWatch();
-  });
+    if (CheckIfAllCharsFound(charState) === false) {
+      startStopWatch();
+    } else {
+      stopStopWatch();
+      toast(`You found all characters. Congratulations!!!`);
+      setSubmitHighscoreModalOpen();
+    }
+  }, [charState]);
+
+  // useEffect(() => {
+  //   console.log({ charState });
+  //   if (CheckIfAllCharsFound(charState) === true) {
+  //     stopStopWatch();
+  //     setSubmitHighscoreModalOpen();
+  //   }
+  // }, [charState]);
+
   return (
     <div className="flex justify-center flex-grow">
-      <CharIcons></CharIcons>
-      <Stopwatch></Stopwatch>
+      <CharIcons />
+      <Stopwatch />
+      <ReactModal isOpen={isHichscoreModalOpen}>
+        <SubmitHighscoreModal style={submitHighscoreModalStyles}></SubmitHighscoreModal>
+      </ReactModal>
       <img className="max-w-none" onClick={handleImgClick} src={imgArr[levelId].img} alt="Find Waldo"></img>
-      <ReactModal style={customStyles} isOpen={isCharPickModalOpen} onRequestClose={setCharPickModalClose}>
+      <ReactModal style={charPickModalStyles} isOpen={isCharPickModalOpen} onRequestClose={setCharPickModalClose}>
         <CharPickModal levelId={levelId} coords={coords}></CharPickModal>
       </ReactModal>
     </div>

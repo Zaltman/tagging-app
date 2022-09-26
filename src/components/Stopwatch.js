@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
+import storeTime from './reducers/time/storeTime';
 export default function Stopwatch() {
   const [time, setTime] = useState(0);
   //   const [running, setRunning] = useState(false);
-  let running = useSelector((state) => state.stopWatch.isRunning);
+  const running = useSelector((state) => state.stopWatch.isRunning);
 
   // console.log(running);
   useEffect(() => {
@@ -15,6 +15,8 @@ export default function Stopwatch() {
       }, 10);
     } else if (!running) {
       clearInterval(interval);
+      console.log(time);
+      storeTime(time);
     }
     return () => clearInterval(interval);
   }, [running]);

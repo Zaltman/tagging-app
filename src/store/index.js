@@ -20,6 +20,5 @@ import stopWatch from '../components/reducers/stopwatch/stopWatch';
 // console.log(rootReducer);
 // const rootReducer = combineReducers({ email: emailReducer, stopWatch: stopWatchReducer });
 const store = configureStore({ reducer });
-console.log(store);
 // console.log(store.getState());
 export default store;

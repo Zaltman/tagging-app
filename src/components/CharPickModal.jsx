@@ -7,10 +7,15 @@ import CheckIfAllCharsFound from './CheckIfAllCharsFound';
 import stopStopWatch from './reducers/stopwatch/stopStopWatch';
 import setCharPickModalClose from './reducers/modals/setCharPickModalClose';
 import { ToastContainer, toast } from 'react-toastify';
-
+import setSubmitHighscoreModalClose from './reducers/modals/setSubmitHighscoreModalClose';
+import setSubmitHighscoreModalOpen from './reducers/modals/setSubmitHighscoreModalOpen';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 export default function CharPickModal(props) {
   const levelId = props.levelId;
   const coords = props.coords;
+  const charState = useSelector((state) => state.charPics);
+
   let whichCharacter;
   let dataToSend = { level: '', character: '', coordX: undefined, cordY: undefined };
   let handleRadioPick = (e) => {
@@ -52,15 +57,15 @@ export default function CharPickModal(props) {
         } else if (isCordsCorrect === false) toast(`${whichCharacter} is not there`);
       })
       .then(() => {
-        let charState = store.getState().charPics;
-        if (CheckIfAllCharsFound(charState) === true) {
-          toast(`You found all characters. Congratulations!!!`);
-
-          stopStopWatch();
-        }
+        // let charState = store.getState().charPics;
+        // console.log({ charState });
+        // if (CheckIfAllCharsFound(charState) === true) {
+        //   toast(`You found all characters. Congratulations!!!`);
+        //   stopStopWatch();
+        //   setSubmitHighscoreModalOpen();
+        // }
       });
   };
-
   return (
     <form className="w-full h-full">
       <fieldset className="flex flex-col w-full h-full justify-center items-center">

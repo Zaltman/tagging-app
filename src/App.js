@@ -45,11 +45,11 @@ export default function App() {
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
       setUserEmail(user.email);
-      console.log({ user });
-      console.log('onauthstatechanged');
+      // console.log({ user });
+      // console.log('onauthstatechanged');
     } else {
       // User is signed out
-      console.log('auth state change sign out');
+      // console.log('auth state change sign out');
       setUserEmail('Log in');
     }
   });
