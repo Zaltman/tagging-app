@@ -9,7 +9,6 @@ import GamePage from './components/Gamepage';
 import Homepage from './components/Homepage';
 import Level from './components/Level';
 import Userpage from './components/Userpage';
-import Level1 from './components/Level1';
 import Register from './components/Register';
 import Login from './components/Login';
 import Navibar from './components/Navibar';
@@ -66,7 +65,6 @@ export default function App() {
           <Route path="/gamepage" element={<GamePage />} />
           <Route path="/authpage" element={<AuthPage />} />
           <Route path="/loginemail" element={<EmailLogin />} />
-          <Route path="/level1" element={<Level1 />} />
           <Route path="/login" element={<Login />} />
           <Route path="/userpage" element={<Userpage />} />
           <Route path="/welcome" element={<Welcome />} />
