@@ -20,6 +20,7 @@ import setUserEmail from './components/reducers/email/setUserEmail';
 import { firebaseConfig } from './components/firebaseConfig';
 import Toast from './components/Toast';
 import { toast } from 'react-toastify';
+import Highscores from './components/Highscores';
 
 export default function App() {
   // Import the functions you need from the SDKs you need
@@ -68,6 +69,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/userpage" element={<Userpage />} />
           <Route path="/welcome" element={<Welcome />} />
+          <Route path="/highscores" element={<Highscores />} />
           <Route path="/level/:id" element={<Level />} />
 
           <Route

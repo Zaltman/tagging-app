@@ -30,7 +30,7 @@ export default function Navibar() {
                 <Link to={'/gamepage'}>Levels</Link>
               </li>
               <li>
-                <Link to={'/about'}>About</Link>
+                <Link to={'/highscores'}>Highscores</Link>
               </li>
             </ul>
           </div>
