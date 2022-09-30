@@ -1,13 +1,12 @@
-// import Header from './Header';
-// import Register from './Register';
+import { useEffect, useState } from 'react';
+
 export default function Highscores() {
-  const getHighscores = (e) => {
+  const [highscoresArr, setHighscoresArr] = useState([]);
+  useEffect(() => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const body = {
-      test: 'event',
-    };
+    const body = {};
 
     const options = {
       method: 'POST',
@@ -16,18 +15,38 @@ export default function Highscores() {
       body: JSON.stringify(body),
     };
 
-    fetch('https://en9rpf4xhw0ifab.m.pipedream.net', options)
-      .then((response) => response)
-      .then((data) => {
-        console.log(data);
-      });
-  };
-  return (
-    <div className="flex items-center justify-center">
-      <div className="font-bold rounded-lg m-36">
-        <h1>Highscores</h1>
-        <button onClick={getHighscores}>Fetch highscores</button>
+    fetch('https://eolrv9o90mfsiab.m.pipedream.net', options)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          const highscoresArr = result.$return_value;
+          console.log(highscoresArr);
+          setHighscoresArr(highscoresArr);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          // setIsLoaded(true);
+          console.log(error);
+        }
+      );
+  }, []);
+  const highscoreElement = highscoresArr.map((highscoreObj) => {
+    console.log(highscoreObj);
+    return (
+      <div className="flex m-4" key={highscoreObj.id}>
+        <div className="mx-4">{highscoreObj.nickName}</div>
+        <div>{highscoreObj.time / 1000} seconds</div>
       </div>
+    );
+  });
+  return (
+    <div className="flex flex-col items-center justify-center ">
+      <div className="font-bold rounded-lg m-20">
+        <h1>Highscores</h1>
+      </div>
+      <div className="flex flex-col">{highscoreElement}</div>
     </div>
   );
 }
