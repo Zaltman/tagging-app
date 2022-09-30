@@ -1,7 +1,7 @@
 // import Header from './Header';
 // import Register from './Register';
 export default function Highscores() {
-  const getHighscores = async (e) => {
+  const getHighscores = (e) => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -16,7 +16,7 @@ export default function Highscores() {
       body: JSON.stringify(body),
     };
 
-    fetch('https://eolrv9o90mfsiab.m.pipedream.net', options)
+    fetch('https://en9rpf4xhw0ifab.m.pipedream.net', options)
       .then((response) => response)
       .then((data) => {
         console.log(data);
