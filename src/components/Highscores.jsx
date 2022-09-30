@@ -1,8 +1,33 @@
 import { useEffect, useState } from 'react';
+import { animated, useSpring } from '@react-spring/web';
 
 export default function Highscores() {
   const [highscoresArr, setHighscoresArr] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleSetVisible = (e) => {
+    console.log(isVisible);
+    if (isVisible === true) {
+      setIsVisible(false);
+    } else if (isVisible === false) {
+      setIsVisible(true);
+    }
+  };
+
+  const styles = useSpring({
+    opacity: isVisible ? 1 : 0,
+    y: isVisible ? 0 : 24,
+  });
+
+  // const styles = useSpring({
+  //   from: {
+  //     opacity: 0,
+  //   },
+  //   to: {
+  //     opacity: 1,
+  //   },
+  // });
   useEffect(() => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -21,7 +46,7 @@ export default function Highscores() {
       .then(
         (result) => {
           const highscoresArr = result.$return_value;
-          console.log(highscoresArr);
+          // console.log(highscoresArr);
           setHighscoresArr(highscoresArr);
           setIsLoading(false);
         },
@@ -36,7 +61,7 @@ export default function Highscores() {
   }, []);
 
   const highscoreElement = highscoresArr.map((highscoreObj) => {
-    console.log(highscoreObj);
+    // console.log(highscoreObj);
     return (
       <div className="flex m-4" key={highscoreObj.id}>
         <div className="mx-4">{highscoreObj.nickName}</div>
@@ -49,11 +74,12 @@ export default function Highscores() {
     return <div className="flex flex-col items-center justify-center m-20">Loading</div>;
   } else
     return (
-      <div className="flex flex-col items-center justify-center ">
+      <animated.div style={styles} className="flex flex-col items-center justify-center ">
         <div className="font-bold rounded-lg m-20">
           <h1>Highscores</h1>
+          <button onClick={handleSetVisible}>Set visible</button>
         </div>
         <div className="flex flex-col">{highscoreElement}</div>
-      </div>
+      </animated.div>
     );
 }
