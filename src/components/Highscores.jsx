@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function Highscores() {
   const [highscoresArr, setHighscoresArr] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -22,6 +23,7 @@ export default function Highscores() {
           const highscoresArr = result.$return_value;
           console.log(highscoresArr);
           setHighscoresArr(highscoresArr);
+          setIsLoading(false);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -32,6 +34,7 @@ export default function Highscores() {
         }
       );
   }, []);
+
   const highscoreElement = highscoresArr.map((highscoreObj) => {
     console.log(highscoreObj);
     return (
@@ -41,12 +44,16 @@ export default function Highscores() {
       </div>
     );
   });
-  return (
-    <div className="flex flex-col items-center justify-center ">
-      <div className="font-bold rounded-lg m-20">
-        <h1>Highscores</h1>
+
+  if (isLoading) {
+    return <div className="flex flex-col items-center justify-center m-20">Loading</div>;
+  } else
+    return (
+      <div className="flex flex-col items-center justify-center ">
+        <div className="font-bold rounded-lg m-20">
+          <h1>Highscores</h1>
+        </div>
+        <div className="flex flex-col">{highscoreElement}</div>
       </div>
-      <div className="flex flex-col">{highscoreElement}</div>
-    </div>
-  );
+    );
 }
