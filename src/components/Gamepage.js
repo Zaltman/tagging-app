@@ -6,7 +6,7 @@ export default function GamePage() {
   // console.log(imgArr);
   const id = useParams().id;
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center absolute w-full">
       <div className="flex flex-col font-bold rounded-lg m-16 text-center">
         <h2 className="font-bold text-xl rounded-lg text-center mb-10">Choose level</h2>
         {imgArr.map((img, index) => {

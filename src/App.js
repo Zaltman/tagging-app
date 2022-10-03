@@ -1,8 +1,6 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider, useSelector } from 'react-redux';
 import './index.css';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import AuthPage from './components/AuthPage';
 import EmailLogin from './components/EmailLogin';
 import GamePage from './components/Gamepage';
@@ -21,7 +19,7 @@ import { firebaseConfig } from './components/firebaseConfig';
 import Toast from './components/Toast';
 import { toast } from 'react-toastify';
 import Highscores from './components/Highscores';
-import { animated, useTransition } from 'react-spring';
+import { animated, useTransition, useSpring } from 'react-spring';
 export default function App() {
   // Import the functions you need from the SDKs you need
   // TODO: Add SDKs for Firebase products that you want to use
@@ -33,7 +31,16 @@ export default function App() {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const auth = getAuth(app);
-  // const location = useLocation();
+
+  const location = useLocation();
+  console.log(location.pathname);
+  const transitions = useTransition(location, {
+    key: (location) => location.pathname,
+    from: { opacity: 0, transform: 'translate(100%, 0)' },
+    enter: { opacity: 1, transform: 'translate(0%, 0)' },
+    leave: { opacity: 0, transform: 'translate(-50%, 0)' },
+  });
+
   // const container = document.getElementById('root');
   // const userEmail = useSelector((state) => state.userEmail);
 
@@ -52,32 +59,34 @@ export default function App() {
 
   return (
     <div className="flex flex-col justify-center w-fit min-w-full">
-      {/* <BrowserRouter> */}
       <Toast />
       <Navibar />
-      {/* <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/homepage" element={<Homepage />} />
-          <Route path="/gamepage" element={<GamePage />} />
-          <Route path="/authpage" element={<AuthPage />} />
-          <Route path="/loginemail" element={<EmailLogin />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/userpage" element={<Userpage />} />
-          <Route path="/welcome" element={<Welcome />} />
-          <Route path="/highscores" element={<Highscores />} />
-          <Route path="/level/:id" element={<Level />} />
+      {transitions((styles, location) => (
+        <animated.div style={styles}>
+          <Routes location={location}>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/homepage" element={<Homepage />} />
+            <Route path="/gamepage" element={<GamePage />} />
+            <Route path="/authpage" element={<AuthPage />} />
+            <Route path="/loginemail" element={<EmailLogin />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/userpage" element={<Userpage />} />
+            <Route path="/welcome" element={<Welcome />} />
+            <Route path="/highscores" element={<Highscores />} />
+            <Route path="/level/:id" element={<Level />} />
 
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: '1rem', display: 'flex', justifyContent: 'center' }}>
-                <p>There's nothing here!</p>
-              </main>
-            }
-          />
-        </Routes>
-      </BrowserRouter> */}
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: '1rem', display: 'flex', justifyContent: 'center' }}>
+                  <p>There's nothing here!</p>
+                </main>
+              }
+            />
+          </Routes>
+        </animated.div>
+      ))}
     </div>
   );
 }

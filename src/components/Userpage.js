@@ -32,7 +32,7 @@ export default function Userpage() {
     );
   } else
     signInElement = (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center absolute w-full">
         <p>Email: {userEmail}</p>
         <button
           onClick={handleSignOut}

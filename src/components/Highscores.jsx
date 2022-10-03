@@ -4,7 +4,7 @@ import { animated, useSpring } from '@react-spring/web';
 export default function Highscores() {
   const [highscoresArr, setHighscoresArr] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleSetVisible = (e) => {
     console.log(isVisible);
@@ -49,6 +49,7 @@ export default function Highscores() {
           // console.log(highscoresArr);
           setHighscoresArr(highscoresArr);
           setIsLoading(false);
+          setIsVisible(true);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -71,15 +72,21 @@ export default function Highscores() {
   });
 
   if (isLoading) {
-    return <div className="flex flex-col items-center justify-center m-20">Loading</div>;
+    return (
+      <div className="flex flex-col items-center justify-center m-20 font-bold rounded-lg absolute w-full">
+        <h2>Highscores</h2>
+        <div className="font-bold rounded-lg m-20">Loading</div>
+      </div>
+    );
   } else
     return (
-      <animated.div style={styles} className="flex flex-col items-center justify-center ">
+      <div className="flex flex-col items-center justify-center absolute w-full">
         <div className="font-bold rounded-lg m-20">
           <h1>Highscores</h1>
-          <button onClick={handleSetVisible}>Set visible</button>
         </div>
-        <div className="flex flex-col">{highscoreElement}</div>
-      </animated.div>
+        <animated.div style={styles}>
+          <div className="flex flex-col">{highscoreElement}</div>
+        </animated.div>
+      </div>
     );
 }

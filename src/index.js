@@ -23,28 +23,6 @@ root.render(
       <React.StrictMode>
         <App />
       </React.StrictMode>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/homepage" element={<Homepage />} />
-        <Route path="/gamepage" element={<GamePage />} />
-        <Route path="/authpage" element={<AuthPage />} />
-        <Route path="/loginemail" element={<EmailLogin />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/userpage" element={<Userpage />} />
-        <Route path="/welcome" element={<Welcome />} />
-        <Route path="/highscores" element={<Highscores />} />
-        <Route path="/level/:id" element={<Level />} />
-
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: '1rem', display: 'flex', justifyContent: 'center' }}>
-              <p>There's nothing here!</p>
-            </main>
-          }
-        />
-      </Routes>
     </Provider>
   </BrowserRouter>
 );

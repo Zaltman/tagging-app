@@ -2,7 +2,7 @@
 // import Register from './Register';
 export default function Homepage() {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center absolute w-full">
       <div className="font-bold rounded-lg m-36">
         <h1>Main info</h1>
 
