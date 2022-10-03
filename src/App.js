@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider, useSelector } from 'react-redux';
 import './index.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import AuthPage from './components/AuthPage';
 import EmailLogin from './components/EmailLogin';
 import GamePage from './components/Gamepage';
@@ -21,7 +21,7 @@ import { firebaseConfig } from './components/firebaseConfig';
 import Toast from './components/Toast';
 import { toast } from 'react-toastify';
 import Highscores from './components/Highscores';
-
+import { animated, useTransition } from 'react-spring';
 export default function App() {
   // Import the functions you need from the SDKs you need
   // TODO: Add SDKs for Firebase products that you want to use
@@ -33,11 +33,9 @@ export default function App() {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const auth = getAuth(app);
-  // console.log(db);
-
-  const container = document.getElementById('root');
-  const userEmail = useSelector((state) => state.userEmail);
-  // store.dispatch({ type: 'changeEmail', payload: 'test setEmail' });
+  // const location = useLocation();
+  // const container = document.getElementById('root');
+  // const userEmail = useSelector((state) => state.userEmail);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -45,8 +43,6 @@ export default function App() {
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
       setUserEmail(user.email);
-      // console.log({ user });
-      // console.log('onauthstatechanged');
     } else {
       // User is signed out
       // console.log('auth state change sign out');
@@ -56,10 +52,10 @@ export default function App() {
 
   return (
     <div className="flex flex-col justify-center w-fit min-w-full">
-      <BrowserRouter>
-        <Toast />
-        <Navibar />
-        <Routes>
+      {/* <BrowserRouter> */}
+      <Toast />
+      <Navibar />
+      {/* <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/homepage" element={<Homepage />} />
@@ -81,7 +77,7 @@ export default function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }

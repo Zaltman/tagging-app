@@ -1,4 +1,3 @@
-import store from '../store';
 import { useSelector } from 'react-redux';
 // import signOut from './signOut';
 import { signOut, getAuth } from 'firebase/auth';
