@@ -65,29 +65,30 @@ export default function Highscores() {
   const highscoreElement = highscoresArr.map((highscoreObj) => {
     // console.log(highscoreObj);
     return (
-      <div className="flex m-4" key={highscoreObj.id}>
-        <div className="mx-4">{highscoreObj.nickName}</div>
-        <div>{highscoreObj.time / 1000} seconds</div>
+      <div className="flex m-2 border-4 p-1 border-red-600 rounded-md " key={highscoreObj.id}>
+        <div className="mx-4 w-52">{highscoreObj.nickName}</div>
+        <div className=" w-52 text-right">{highscoreObj.time / 1000} seconds</div>
       </div>
     );
   });
 
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center m-20 font-bold rounded-lg absolute w-full">
-        <h2>Highscores</h2>
-        <div className="font-bold rounded-lg m-20">Loading</div>
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex flex-col items-center justify-center m-20 font-bold rounded-lg absolute w-full">
+  //       <h2>Highscores</h2>
+  //       <div className="font-bold rounded-lg m-20">Loading</div>
+  //     </div>
+  //   );
+  // }
+  // else
+  return (
+    <div className="flex flex-col items-center justify-center absolute w-full">
+      <div className="font-bold rounded-lg m-20">
+        <h1>Highscores</h1>
       </div>
-    );
-  } else
-    return (
-      <div className="flex flex-col items-center justify-center absolute w-full">
-        <div className="font-bold rounded-lg m-20">
-          <h1>Highscores</h1>
-        </div>
-        <animated.div style={styles}>
-          <div className="flex flex-col">{highscoreElement}</div>
-        </animated.div>
-      </div>
-    );
+      <animated.div style={styles}>
+        <div className="flex flex-col">{highscoreElement}</div>
+      </animated.div>
+    </div>
+  );
 }

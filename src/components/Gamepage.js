@@ -17,6 +17,7 @@ export default function GamePage() {
           );
           return element;
         })}
+        <div className=" m-8">More coming soon</div>
       </div>
     </div>
   );
