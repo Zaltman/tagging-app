@@ -18,6 +18,7 @@ export default function Highscores() {
   const styles = useSpring({
     opacity: isVisible ? 1 : 0,
     y: isVisible ? 0 : 24,
+    config: { precision: 0.0001 },
   });
 
   // const styles = useSpring({

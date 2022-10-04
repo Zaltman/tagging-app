@@ -85,7 +85,7 @@ export default function Level() {
   // }, [charState]);
 
   return (
-    <div className="flex justify-center flex-grow">
+    <div className="flex justify-center flex-grow absolute w-full top-0">
       <CharIcons />
       <Stopwatch />
       <ReactModal isOpen={isHichscoreModalOpen}>

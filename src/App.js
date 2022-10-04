@@ -39,7 +39,10 @@ export default function App() {
     from: { opacity: 0, transform: 'translate(100%, 0)' },
     enter: { opacity: 1, transform: 'translate(0%, 0)' },
     leave: { opacity: 0, transform: 'translate(-50%, 0)' },
+    config: { precision: 0.0001 },
   });
+
+  // useSpring({ config: { duration: 950 } });
 
   // const container = document.getElementById('root');
   // const userEmail = useSelector((state) => state.userEmail);
