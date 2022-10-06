@@ -21,11 +21,11 @@ export default function Stopwatch() {
     return () => clearInterval(interval);
   }, [running]);
   return (
-    <div className="fixed left-1/2 -translate-x-1/2 ">
-      <div className="text-xl text-red-500 bg-black rounded-md p-1">
-        <span className=" bg-black">{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-        <span className=" bg-black">{('0' + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
-        <span className=" bg-black">{('0' + ((time / 10) % 100)).slice(-2)}</span>
+    <div className=" w-fit h-fit ">
+      <div className="text-xl text-red-500  rounded-md p-1">
+        <span className=" ">{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+        <span className=" ">{('0' + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
+        <span className=" ">{('0' + ((time / 10) % 100)).slice(-2)}</span>
       </div>
       <div className="buttons">
         {/* <button onClick={() => setRunning(true)}>Start</button>

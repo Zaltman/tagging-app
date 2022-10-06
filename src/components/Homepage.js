@@ -1,14 +1,21 @@
 // import Header from './Header';
+
+import { Link } from 'react-router-dom';
+
 // import Register from './Register';
 export default function Homepage() {
   return (
     <div className="flex items-center justify-center absolute w-full">
-      <div className="font-bold rounded-lg m-36">
-        <h1>Main info</h1>
-
-        <h2>Lorem ipsum dolor sit amet.</h2>
-        <h2>Id esse neque maxime itaque.</h2>
-        <h2>Animi dolores maiores culpa laudantium!</h2>
+      <div className="font-bold rounded-lg m-36 text-center">
+        <h1 className=" text-2xl  inline-block mb-10 text-center">
+          find<div className=" text-2xl text-white inline-block">Them</div>
+        </h1>
+        {/* <h2>Find all characters </h2> */}
+        <div>
+          <Link className=" " to="/level/0">
+            Play
+          </Link>
+        </div>
       </div>
     </div>
   );

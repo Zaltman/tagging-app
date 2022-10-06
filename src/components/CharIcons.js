@@ -8,10 +8,10 @@ export default function CharIcons() {
   let zoidbergState = useSelector((state) => state.charPics.zoidbergIsFound);
 
   return (
-    <div className="flex flex-col fixed right-0 top-1/3 bg-black bg-opacity-80 rounded-md p-1 ">
-      <img className={'h-16 bg-black' + (waldoState ? 'opacity-50' : '')} src={waldoImg}></img>
-      <img className={'h-16 bg-black' + (bowserState ? 'opacity-50' : '')} src={bowserImg}></img>
-      <img className={'h-16 bg-black' + (zoidbergState ? 'opacity-50' : '')} src={zoidbergImg}></img>
+    <div className="flex  w-fit h-fit   rounded-md p-1 ">
+      <img className={'h-16 ' + (waldoState ? 'opacity-50' : '')} src={waldoImg}></img>
+      <img className={'h-16 ' + (bowserState ? 'opacity-50' : '')} src={bowserImg}></img>
+      <img className={'h-16 ' + (zoidbergState ? 'opacity-50' : '')} src={zoidbergImg}></img>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { animated, useSpring } from '@react-spring/web';
-import GetAndSetHighscoreArr from './GetHighscoreArr';
+import GetAndSetHighscoreArr from './GeAndSetHighscoreArr';
 import { useSelector } from 'react-redux';
 
 export default function Highscores() {
