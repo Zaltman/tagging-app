@@ -5,6 +5,8 @@ import charPics from './charPics/charPics';
 import charPickModal from './modals/charPickModal';
 import submitHighscoreModal from './modals/submitHighscoreModal';
 import time from './time/time';
+import highscore from './highscore/highscore';
+
 let reducer;
 export default reducer = combineReducers({
   email: email,
@@ -13,4 +15,5 @@ export default reducer = combineReducers({
   charPickModal: charPickModal,
   submitHighscoreModal: submitHighscoreModal,
   time: time,
+  highscore: highscore,
 });

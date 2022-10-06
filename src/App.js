@@ -20,6 +20,7 @@ import Toast from './components/Toast';
 import { toast } from 'react-toastify';
 import Highscores from './components/Highscores';
 import { animated, useTransition, useSpring } from 'react-spring';
+import GetAndSetHighscoreArr from './components/GetHighscoreArr';
 export default function App() {
   // Import the functions you need from the SDKs you need
   // TODO: Add SDKs for Firebase products that you want to use
@@ -41,11 +42,7 @@ export default function App() {
     leave: { opacity: 0, transform: 'translate(-50%, 0)' },
     config: { precision: 0.0001 },
   });
-
-  // useSpring({ config: { duration: 950 } });
-
-  // const container = document.getElementById('root');
-  // const userEmail = useSelector((state) => state.userEmail);
+  GetAndSetHighscoreArr();
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
