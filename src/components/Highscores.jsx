@@ -62,12 +62,15 @@ export default function Highscores() {
       );
   }, []);
 
-  const highscoreElement = highscoresArr.map((highscoreObj) => {
-    // console.log(highscoreObj);
+  const highscoreElement = highscoresArr.map((highscoreObj, index) => {
+    console.log(index);
     return (
       <div className="flex m-2 border-4 p-1 border-red-600 rounded-md " key={highscoreObj.id}>
-        <div className="mx-4 w-52">{highscoreObj.nickName}</div>
-        <div className=" w-52 text-right">{highscoreObj.time / 1000} seconds</div>
+        <div className="flex ml-2">
+          <div>{index + 1}</div>
+          <div className="mx-4 w-52">{highscoreObj.nickName}</div>
+        </div>
+        <div className=" w-52 mr-2 text-right">{highscoreObj.time / 1000} seconds</div>
       </div>
     );
   });
