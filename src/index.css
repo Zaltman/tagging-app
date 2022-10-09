@@ -4,7 +4,7 @@
 
 * {
   color: rgb(220 38 38);
-  background-color: #252627ff;
+  /* background-color: #252627ff; */
 }
 
 body {
@@ -13,6 +13,7 @@ body {
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #252627ff;
 }
 
 code {

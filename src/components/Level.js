@@ -49,10 +49,8 @@ export default function Level() {
   const stopwatchIsRunning = useSelector((state) => state.stopWatch.isRunning);
   const charState = useSelector((state) => state.charPics);
 
-  // const [isHichscoreModalOpen, setisHichscoreModalOpen] = useState(false);
   const imgArr = getImgArr();
 
-  // console.log({ isHichscoreModalOpen });
   let handleImgClick = (e) => {
     let newCords = { ...coords };
     newCords.x = e.pageX - e.target.offsetLeft;
@@ -86,8 +84,6 @@ export default function Level() {
 
   return (
     <div className="flex justify-center flex-grow absolute w-full top-0">
-      <CharIcons />
-      <Stopwatch />
       <ReactModal isOpen={isHichscoreModalOpen}>
         <SubmitHighscoreModal style={submitHighscoreModalStyles}></SubmitHighscoreModal>
       </ReactModal>

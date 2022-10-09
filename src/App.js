@@ -35,7 +35,7 @@ export default function App() {
   const auth = getAuth(app);
 
   const location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
   const transitions = useTransition(location, {
     key: (location) => location.pathname,
     from: { opacity: 0, transform: 'translate(100%, 0)' },
@@ -63,7 +63,7 @@ export default function App() {
   });
 
   return (
-    <div className="flex flex-col justify-center w-fit min-w-full">
+    <div className="flex flex-col justify-center w-fit min-w-full ">
       <Toast />
       <Navibar />
       {transitions((styles, location) => (
