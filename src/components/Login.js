@@ -93,7 +93,7 @@ export default function Login() {
   }
   if (userEmail === 'Log in') {
     return (
-      <div>
+      <div className="absolute w-full">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center text-center" id="regForm">
           <p className="">Login with email and password </p>
           <label htmlFor="emailInput">Email</label>

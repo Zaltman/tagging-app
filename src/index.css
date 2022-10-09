@@ -20,7 +20,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-#regForm > * {
+.regForm > * {
   margin: 5px;
   text-align: center;
 }
