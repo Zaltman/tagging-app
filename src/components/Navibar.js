@@ -49,7 +49,7 @@ export default function Navibar() {
       </animated.div>
       <div className="border-gray-200">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
-          <Link className="self-center text-xl font-semibold whitespace-nowrap dark:text-white" to={'/'}>
+          <Link className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white" to={'/'}>
             Tagging app
           </Link>
           <div className="flex items-center">{userEmailElement}</div>
@@ -60,13 +60,19 @@ export default function Navibar() {
           <div className="flex items-center">
             <ul className="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
               <li>
-                <Link to={'/'}>Home</Link>
+                <Link className=" text-2xl " to={'/'}>
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to={'/gamepage'}>Play</Link>
+                <Link className=" text-2xl " to={'/gamepage'}>
+                  Play
+                </Link>
               </li>
               <li>
-                <Link to={'/highscores'}>Highscores</Link>
+                <Link className=" text-2xl " to={'/highscores'}>
+                  Highscores
+                </Link>
               </li>
             </ul>
           </div>

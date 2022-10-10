@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { animated, useSpring } from '@react-spring/web';
 import GetAndSetHighscoreArr from './GeAndSetHighscoreArr';
 import { useSelector } from 'react-redux';
-
+import { GiPodiumWinner, GiPodiumSecond, GiPodiumThird } from 'react-icons/gi';
 export default function Highscores() {
   const [isLoading, setIsLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
@@ -22,13 +22,25 @@ export default function Highscores() {
     config: { precision: 0.0001 },
   });
 
+  const firstPlaceEl = <GiPodiumWinner className=" text-3xl  fill-amber-400"></GiPodiumWinner>;
+  const secondPlaceEl = <GiPodiumSecond className=" text-3xl  fill-neutral-400"></GiPodiumSecond>;
+  const thirdPlaceEl = <GiPodiumThird className=" text-3xl  fill-amber-800"></GiPodiumThird>;
+
   useEffect(() => {}, []);
   if (highscoresArr !== undefined) {
     highscoreElement = highscoresArr.map((highscoreObj, index) => {
       return (
         <div className="flex m-2 border-4 p-1 border-red-600 rounded-md " key={highscoreObj.id}>
           <div className="flex ml-2">
-            <div>{index + 1}</div>
+            <div>
+              {index + 1 == 1
+                ? firstPlaceEl
+                : index + 1 == 2
+                ? secondPlaceEl
+                : index + 1 == 3
+                ? thirdPlaceEl
+                : index + 1}
+            </div>
             <div className="mx-4 w-52">{highscoreObj.nickName}</div>
           </div>
           <div className=" w-52 mr-2 text-right">{highscoreObj.time / 1000} seconds</div>
