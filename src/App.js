@@ -74,7 +74,7 @@ export default function App() {
             <Route path="/homepage" element={<Homepage />} />
             <Route path="/gamepage" element={<GamePage />} />
             <Route path="/authpage" element={<AuthPage />} />
-            <Route path="/loginemail" element={<EmailLogin />} />
+            <Route path="/loginemail" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/userpage" element={<Userpage />} />
             <Route path="/welcome" element={<Welcome />} />

@@ -28,9 +28,17 @@ export default function Navibar() {
 
   let userEmailElement;
   if (userEmail === 'Log in') {
-    userEmailElement = <Link to={'/login'}>{userEmail}</Link>;
+    userEmailElement = (
+      <Link className=" text-2xl" to={'/login'}>
+        {userEmail}
+      </Link>
+    );
   } else {
-    userEmailElement = <Link to={'/userpage'}>{userEmail}</Link>;
+    userEmailElement = (
+      <Link className=" text-2xl" to={'/userpage'}>
+        {userEmail}
+      </Link>
+    );
   }
   // useEffect(() => {
   //   setCharsSpringState(true);

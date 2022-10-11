@@ -91,32 +91,42 @@ export default function Login() {
     return (
       <div className="absolute w-full">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center text-center" id="regForm">
-          <p className="">Login with email and password </p>
-          <label htmlFor="emailInput">Email</label>
-          <input
-            type="text"
-            id="emailInput"
-            placeholder="Email"
-            {...register('Email', { required: true, minLength: 4, pattern: /^\S+@\S+$/i })}
-          />
-          {errors.Email && <span>{emailErrMsg}</span>}
-          <label htmlFor="passwordInput">Password</label>
-          <input
-            id="passwordInput"
-            type="password"
-            placeholder="Password"
-            {...register('Password', { required: true, minLength: 6, maxLength: 20 })}
-          />
-          {errors.Password && <span>{passwordErrMsg}</span>}
-          <input type="submit" />
-          <Link to={'/register'}>No account? Register</Link>
+          <div className="flex flex-col m-8 border-red-600 border-4 rounded-md p-6">
+            <p className=" text-4xl font-bold m-2">Login with email</p>
+            <label className=" text-2xl m-2" htmlFor="emailInput">
+              Email
+            </label>
+            <input
+              className=" text-center p-1 rounded-md "
+              type="text"
+              id="emailInput"
+              placeholder="Email"
+              {...register('Email', { required: true, minLength: 4, pattern: /^\S+@\S+$/i })}
+            />
+            {errors.Email && <span>{emailErrMsg}</span>}
+            <label className=" text-2xl m-2" htmlFor="passwordInput">
+              Password
+            </label>
+            <input
+              className=" text-center p-1 rounded-md"
+              id="passwordInput"
+              type="password"
+              placeholder="Password"
+              {...register('Password', { required: true, minLength: 6, maxLength: 20 })}
+            />
+            {errors.Password && <span>{passwordErrMsg}</span>}
+            <input
+              className=" text-center text-2xl w-full mb-2 p-1 bg-red-600 rounded-md text-white mt-8 cursor-pointer hover:bg-red-700"
+              type="submit"
+            />
+          </div>
           <button
             onClick={handleGoogleLoginClick}
             type="button"
-            class="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-base px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 m-2 "
+            className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-2xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 m-2 "
           >
             <svg
-              class="mr-2 -ml-1 w-4 h-4"
+              class="mr-2 -ml-1 w-6 h-6"
               aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -132,6 +142,12 @@ export default function Login() {
             </svg>
             Sign in with Google
           </button>
+          <Link
+            className=" text-center text-2xl mb-2 p-1 bg-red-600 rounded-md text-white mt-8 w-[286px] hover:bg-red-700"
+            to={'/register'}
+          >
+            No account? Register
+          </Link>
         </form>
       </div>
     );

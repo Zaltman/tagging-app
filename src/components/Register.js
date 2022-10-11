@@ -80,25 +80,34 @@ export default function Register() {
   return (
     // <div> Register page</div>
     <form className=" flex justify-center w-full absolute" onSubmit={handleSubmit(onSubmit)} id="regForm">
-      <div className="flex flex-col max-w-sm w-full regForm">
-        <label htmlFor="fName">First name</label>
+      <div className="flex flex-col max-w-sm w-full regForm items-center">
+        <label className=" text-2xl" htmlFor="fName">
+          First name
+        </label>
         <input
+          className="text-center  rounded-md m-2 p-2"
           type="text"
           placeholder="First name"
           id="fName"
           {...register('First name', { required: true, maxLength: 80 })}
         />
 
-        <label htmlFor="lName">Last name</label>
+        <label className=" text-2xl" htmlFor="lName">
+          Last name
+        </label>
         <input
+          className="text-center  rounded-md m-2 p-2"
           type="text"
           id="lName"
           placeholder="Last name"
           {...register('Last name', { required: true, maxLength: 100 })}
         />
 
-        <label htmlFor="emailInput">Email</label>
+        <label className=" text-2xl" htmlFor="emailInput">
+          Email
+        </label>
         <input
+          className="text-center  rounded-md m-2 p-2"
           type="text"
           id="emailInput"
           placeholder="Email"
@@ -106,16 +115,22 @@ export default function Register() {
         />
         {errors.Email && <span>{emailErrMsg}</span>}
 
-        <label htmlFor="passwordInput">Password</label>
+        <label className=" text-2xl" htmlFor="passwordInput">
+          Password
+        </label>
         <input
+          className="text-center  rounded-md m-2 p-2"
           id="passwordInput"
           type="password"
           placeholder="Password"
           {...register('Password', { required: true, minLength: 6, maxLength: 20 })}
         />
         {errors.Password && <span>{passwordErrMsg}</span>}
-        <label htmlFor="passwordInput2">Repeat password</label>
+        <label className=" text-2xl" htmlFor="passwordInput2">
+          Repeat password
+        </label>
         <input
+          className="text-center  rounded-md m-2 p-2"
           id="passwordInput2"
           type="password"
           placeholder="Password"
@@ -123,8 +138,16 @@ export default function Register() {
         />
         {errors.Password2 && <span>{password2ErrMsg}</span>}
 
-        <input type="submit" />
-        <Link to={'/loginemail'}>Already Have account? Log in</Link>
+        <input
+          className="text-center text-2xl mb-2 p-1 bg-red-600 rounded-md text-white mt-8 w-[286px] hover:bg-red-700"
+          type="submit"
+        />
+        <Link
+          className="text-center text-2xl mb-2 p-1 bg-red-600 rounded-md text-white mt-8 w-[286px] hover:bg-red-700"
+          to={'/loginemail'}
+        >
+          Already Have account? Log in
+        </Link>
       </div>
     </form>
   );
