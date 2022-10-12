@@ -4,7 +4,6 @@
 
 * {
   color: rgb(220 38 38);
-  /* background-color: #252627ff; */
 }
 
 body {
@@ -20,17 +19,3 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
-/* .regForm > * {
-  margin: 5px;
-  text-align: center;
-} */
-
-li {
-}
-
-/* button {
-  border-radius: 12px;
-  background: linear-gradient(145deg, #a33535, #c23f3f);
-  box-shadow: 12px 12px 27px #9c3333, -12px -12px 27px #ce4343;
-} */
