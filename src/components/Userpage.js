@@ -24,7 +24,7 @@ export default function Userpage() {
   if (userEmail === 'Log in') {
     signInElement = (
       <Link
-        className="g-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-5"
+        className="text-center text-2xl mb-2 p-1 bg-red-600 rounded-md text-white mt-8 w-[150px] hover:bg-red-700"
         to={'/login'}
       >
         Login
@@ -33,10 +33,10 @@ export default function Userpage() {
   } else
     signInElement = (
       <div className="flex flex-col items-center absolute w-full">
-        <p>Email: {userEmail}</p>
+        <p className=" text-2xl">Email: {userEmail}</p>
         <button
           onClick={handleSignOut}
-          className="g-transparent hover:bg-blue-500 text-blue-700 font-semibold m-16 hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          className="text-center text-2xl mb-2 p-1 bg-red-600 rounded-md text-white mt-8 w-[150px] hover:bg-red-700"
         >
           Sign out
         </button>

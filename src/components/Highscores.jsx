@@ -27,9 +27,15 @@ export default function Highscores() {
     config: { precision: 0.0001 },
   });
 
-  const firstPlaceEl = <GiPodiumWinner className="flex justify-around text-6xl  fill-amber-400 "></GiPodiumWinner>;
-  const secondPlaceEl = <GiPodiumSecond className="flex justify-around text-5xl  fill-neutral-400"></GiPodiumSecond>;
-  const thirdPlaceEl = <GiPodiumThird className="flex justify-around text-4xl  fill-amber-800"></GiPodiumThird>;
+  const firstPlaceEl = (
+    <GiPodiumWinner className="flex justify-around text-6xl -ml-2 -mr-8  fill-amber-400 "></GiPodiumWinner>
+  );
+  const secondPlaceEl = (
+    <GiPodiumSecond className="flex justify-around text-6xl -ml-2 -mr-8  fill-neutral-400"></GiPodiumSecond>
+  );
+  const thirdPlaceEl = (
+    <GiPodiumThird className="flex justify-around text-6xl -ml-2 -mr-8  fill-amber-800"></GiPodiumThird>
+  );
 
   useEffect(() => {}, []);
   if (highscoresArr !== undefined) {
@@ -49,7 +55,7 @@ export default function Highscores() {
                 ? thirdPlaceEl
                 : index + 1}
             </div>
-            <div className="mx-4 w-52 text-xl ml-12">{highscoreObj.nickName}</div>
+            <div className="mx-4 w-52 text-2xl ml-12 text-white font-bold">{highscoreObj.nickName}</div>
           </div>
           <div className=" w-52 mr-2 text-right">{highscoreObj.time / 1000} seconds</div>
         </div>
@@ -72,7 +78,7 @@ export default function Highscores() {
         />
       </button>
       <animated.div style={styles}>
-        <div className="flex flex-col">{highscoreElement}</div>
+        <div className="flex flex-col ">{highscoreElement}</div>
       </animated.div>
     </div>
   );

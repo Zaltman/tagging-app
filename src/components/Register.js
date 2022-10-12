@@ -85,7 +85,7 @@ export default function Register() {
           First name
         </label>
         <input
-          className="text-center  rounded-md m-2 p-2"
+          className="text-center text-2xl rounded-md m-2 p-2"
           type="text"
           placeholder="First name"
           id="fName"
@@ -96,7 +96,7 @@ export default function Register() {
           Last name
         </label>
         <input
-          className="text-center  rounded-md m-2 p-2"
+          className="text-center text-2xl rounded-md m-2 p-2"
           type="text"
           id="lName"
           placeholder="Last name"
@@ -107,7 +107,7 @@ export default function Register() {
           Email
         </label>
         <input
-          className="text-center  rounded-md m-2 p-2"
+          className="text-center text-2xl rounded-md m-2 p-2"
           type="text"
           id="emailInput"
           placeholder="Email"
@@ -119,7 +119,7 @@ export default function Register() {
           Password
         </label>
         <input
-          className="text-center  rounded-md m-2 p-2"
+          className="text-center text-2xl rounded-md m-2 p-2"
           id="passwordInput"
           type="password"
           placeholder="Password"
@@ -130,7 +130,7 @@ export default function Register() {
           Repeat password
         </label>
         <input
-          className="text-center  rounded-md m-2 p-2"
+          className="text-center text-2xl rounded-md m-2 p-2"
           id="passwordInput2"
           type="password"
           placeholder="Password"
