@@ -70,13 +70,7 @@ export default function Highscores() {
       <div className="font-bold rounded-lg m-16 ">
         <h1 className=" mb-2 text-3xl">Highscores</h1>
       </div>
-      <button>
-        <BtnRefresh
-          className=" transition-all ease-in-out hover:animate-spin"
-          fill="rgb(220 38 38)"
-          onClick={GetAndSetHighscoreArr}
-        />
-      </button>
+      <button></button>
       <animated.div style={styles}>
         <div className="flex flex-col ">{highscoreElement}</div>
       </animated.div>

@@ -13,6 +13,11 @@ export default function charPics(
     case 'foundZoidberg':
       newState.zoidbergIsFound = true;
       return newState;
+    case 'reset':
+      newState.zoidbergIsFound = false;
+      newState.waldoIsFound = false;
+      newState.bowserIsFound = false;
+      return newState;
     default:
       return state;
   }

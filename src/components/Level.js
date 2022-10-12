@@ -15,6 +15,7 @@ import CheckIfAllCharsFound from './CheckIfAllCharsFound';
 import stopStopWatch from './reducers/stopwatch/stopStopWatch';
 import setSubmitHighscoreModalOpen from './reducers/modals/setSubmitHighscoreModalOpen';
 import { toast } from 'react-toastify';
+import setSubmitHighscoreModalClose from './reducers/modals/setSubmitHighscoreModalClose';
 //modal style
 let charPickModalStyles = {
   content: {
@@ -25,6 +26,8 @@ let charPickModalStyles = {
     transform: 'translate(-50%, -50%)',
     height: '400px',
     width: '250px',
+    backgroundColor: '#252627ff',
+    borderRadius: '10px',
   },
 };
 let submitHighscoreModalStyles = {
@@ -34,8 +37,10 @@ let submitHighscoreModalStyles = {
     right: 'auto',
     bottom: 'auto',
     transform: 'translate(-50%, -50%)',
-    height: '400px',
-    width: '250px',
+    height: '300px',
+    width: '400px',
+    backgroundColor: '#252627ff',
+    borderRadius: '10px',
   },
 };
 
@@ -55,10 +60,10 @@ export default function Level() {
     let newCords = { ...coords };
     newCords.x = e.pageX - e.target.offsetLeft;
     newCords.y = e.pageY - e.target.offsetTop;
+    console.log(newCords);
     setCoords(newCords);
     setCharPickModalOpen();
   };
-
   // level0 char coords
   // waldo : top left x671  y6195 bottom right x982 y6366
   // zoidberg : top left x1518 y7173 bottom right x1761 7470
@@ -84,8 +89,12 @@ export default function Level() {
 
   return (
     <div className="flex justify-center flex-grow absolute w-full top-0">
-      <ReactModal isOpen={isHichscoreModalOpen}>
-        <SubmitHighscoreModal style={submitHighscoreModalStyles}></SubmitHighscoreModal>
+      <ReactModal
+        style={submitHighscoreModalStyles}
+        isOpen={isHichscoreModalOpen}
+        onRequestClose={setSubmitHighscoreModalClose}
+      >
+        <SubmitHighscoreModal></SubmitHighscoreModal>
       </ReactModal>
       <img className="max-w-none" onClick={handleImgClick} src={imgArr[levelId].img} alt="Find Waldo"></img>
       <ReactModal style={charPickModalStyles} isOpen={isCharPickModalOpen} onRequestClose={setCharPickModalClose}>
