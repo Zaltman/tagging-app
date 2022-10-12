@@ -2,12 +2,10 @@ import { useState } from 'react';
 import ReactModal from 'react-modal';
 import { useParams } from 'react-router-dom';
 import getImgArr from '../assetts/getImgArr';
-import Stopwatch from './Stopwatch';
 import { useEffect } from 'react';
 import startStopWatch from './reducers/stopwatch/startStopWatch';
 import setCharPickModalOpen from './reducers/modals/setCharPickModalOpen';
-import CharIcons from './CharIcons';
-import { useSelector, getState } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CharPickModal from './CharPickModal';
 import setCharPickModalClose from './reducers/modals/setCharPickModalClose';
 import SubmitHighscoreModal from './SubmitHighscoreModal';
@@ -51,7 +49,6 @@ export default function Level() {
   const levelId = parseInt(useParams().id);
   const isCharPickModalOpen = useSelector((state) => state.charPickModal.isOpen);
   const isHichscoreModalOpen = useSelector((state) => state.submitHighscoreModal.isOpen);
-  const stopwatchIsRunning = useSelector((state) => state.stopWatch.isRunning);
   const charState = useSelector((state) => state.charPics);
 
   const imgArr = getImgArr();
@@ -64,10 +61,6 @@ export default function Level() {
     setCoords(newCords);
     setCharPickModalOpen();
   };
-  // level0 char coords
-  // waldo : top left x671  y6195 bottom right x982 y6366
-  // zoidberg : top left x1518 y7173 bottom right x1761 7470
-  // bowser : top left x1576 y3375 bottom right x1773 y3526
 
   useEffect(() => {
     if (CheckIfAllCharsFound(charState) === false) {
@@ -78,14 +71,6 @@ export default function Level() {
       setSubmitHighscoreModalOpen();
     }
   }, [charState]);
-
-  // useEffect(() => {
-  //   console.log({ charState });
-  //   if (CheckIfAllCharsFound(charState) === true) {
-  //     stopStopWatch();
-  //     setSubmitHighscoreModalOpen();
-  //   }
-  // }, [charState]);
 
   return (
     <div className="flex justify-center flex-grow absolute w-full top-0">

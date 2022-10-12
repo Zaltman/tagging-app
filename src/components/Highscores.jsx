@@ -1,25 +1,15 @@
 import { useEffect, useState } from 'react';
 import { animated, useSpring } from '@react-spring/web';
-import GetAndSetHighscoreArr from './GeAndSetHighscoreArr';
 import { useSelector } from 'react-redux';
 import { GiPodiumWinner, GiPodiumSecond, GiPodiumThird } from 'react-icons/gi';
-import { ReactComponent as BtnRefresh } from '../assetts/btnRefresh.svg';
 
 export default function Highscores() {
-  const [isLoading, setIsLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const highscoresArr = useSelector((state) => state.highscore);
   let highscoreElement;
-  if (highscoresArr !== undefined && isVisible == false) {
+  if (highscoresArr !== undefined && isVisible === false) {
     setIsVisible(true);
   }
-  const handleSetVisible = (e) => {
-    if (isVisible === true) {
-      setIsVisible(false);
-    } else if (isVisible === false) {
-      setIsVisible(true);
-    }
-  };
 
   const styles = useSpring({
     opacity: isVisible ? 1 : 0,
@@ -47,11 +37,11 @@ export default function Highscores() {
         >
           <div className="flex ml-2 items-center ">
             <div className=" ">
-              {index + 1 == 1
+              {index + 1 === 1
                 ? firstPlaceEl
-                : index + 1 == 2
+                : index + 1 === 2
                 ? secondPlaceEl
-                : index + 1 == 3
+                : index + 1 === 3
                 ? thirdPlaceEl
                 : index + 1}
             </div>

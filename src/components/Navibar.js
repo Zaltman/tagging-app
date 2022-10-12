@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { animated, Spring, useSpring, useTransition } from 'react-spring';
+import { animated, useSpring } from 'react-spring';
 import CharIcons from './CharIcons';
 import Stopwatch from './Stopwatch';
 
@@ -20,9 +19,9 @@ export default function Navibar() {
   });
 
   // spring animation controller
-  if (location.pathname == '/level/0' && charsSpringState == true) {
+  if (location.pathname === '/level/0' && charsSpringState === true) {
     setCharsSpringState(false);
-  } else if (location.pathname !== '/level/0' && charsSpringState == false) {
+  } else if (location.pathname !== '/level/0' && charsSpringState === false) {
     setCharsSpringState(true);
   }
 
@@ -40,9 +39,6 @@ export default function Navibar() {
       </Link>
     );
   }
-  // useEffect(() => {
-  //   setCharsSpringState(true);
-  // }, []);
 
   return (
     <nav className=" flex flex-col h-28 bg-darkBG">
